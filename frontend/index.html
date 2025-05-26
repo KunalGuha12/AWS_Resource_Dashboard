@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS Resource Monitor</title>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        height: 100vh;
+        background: url("data-center-concept-server-room-600nw-2346485383.webp")
+          no-repeat center center/cover;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      /* Navbar */
+      nav {
+        width: 100%;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+      }
+
+      .nav-logo {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo i {
+        margin-right: 10px;
+        color: #ff9900;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links div {
+        cursor: pointer;
+        color: #ffffff;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links div:hover {
+        color: #ff9900;
+      }
+
+      .refresh-btn {
+        cursor: pointer;
+        color: #ffffff;
+        background: #007bff;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 5px;
+        margin-left: 20px;
+        transition: background 0.3s;
+      }
+
+      .refresh-btn:hover {
+        background: #0056b3;
+      }
+
+      /* Main Content */
+      .main-content {
+        margin-top: 80px;
+        width: 80%;
+        height: 60%;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: opacity 0.5s;
+        overflow-y: auto;
+      }
+
+      .dashboard-title {
+        font-size: 3em;
+        color: #ffffff;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        margin-bottom: 20px;
+      }
+
+      .dashboard-content {
+        font-size: 1.5em;
+        color: #f0f0f0;
+        text-align: left;
+        padding: 20px;
+      }
+
+      .service-title {
+        font-size: 2em;
+        margin-bottom: 15px;
+        color: #ffcc00;
+      }
+
+      .resource-list {
+        margin-top: 10px;
+        padding: 0 10px;
+        text-align: left;
+      }
+
+      .resource-list div {
+        margin: 10px 0;
+        border-bottom: 1px solid #ffffff44;
+        padding-bottom: 5px;
+      }
+
+      /* Footer */
+      footer {
+        position: fixed;
+        bottom: 10px;
+        color: #ccc;
+        font-size: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="nav-logo">
+        <i class="fas fa-cloud"></i>AWS Resource Monitor
+      </div>
+      <div class="nav-links">
+        <div onclick="showService('EC2')">
+          <i class="fas fa-server"></i> EC2 Instances
+        </div>
+        <div onclick="showService('RDS')">
+          <i class="fas fa-database"></i> RDS Instances
+        </div>
+        <div onclick="showService('Lambda')">
+          <i class="fab fa-aws"></i> Lambda Functions
+        </div>
+        <div onclick="showService('ECS')">
+          <i class="fas fa-network-wired"></i> ECS Clusters
+        </div>
+        <!-- Refresh Button -->
+        <button class="refresh-btn" onclick="refreshResources()">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content" id="mainContent">
+      <div>
+        <h1 class="dashboard-title">
+          <i class="fas fa-tachometer-alt"></i> AWS RESOURCE MONITORING
+        </h1>
+        <p class="dashboard-content" id="contentArea">
+          Welcome to your AWS Resource Monitoring Dashboard. Click on any
+          service above to view details.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>© 2025 AWS Resource Monitor | Developed by Kunal Guha</footer>
+
+    <!-- JavaScript for Dynamic Content -->
+    <script>
+      let awsData = null;
+
+      // Fetch AWS resources
+      async function fetchAWSResources() {
+        try {
+          const response = await fetch("http://localhost:5000/aws-resources");
+          awsData = await response.json();
+          console.log("AWS Resources Fetched:", awsData);
+          document.getElementById("contentArea").innerHTML =
+            "AWS resources refreshed successfully.";
+        } catch (error) {
+          console.error("Error fetching AWS resources:", error);
+          document.getElementById("contentArea").innerHTML =
+            "Failed to load resources.";
+        }
+      }
+
+      // Refresh AWS resources
+      async function refreshResources() {
+        awsData = null;
+        await fetchAWSResources();
+        document.getElementById("contentArea").innerHTML =
+          "Resources refreshed! Select a service to view details.";
+      }
+
+      // Display the selected service's details
+      async function showService(service) {
+        if (!awsData) {
+          await fetchAWSResources();
+        }
+
+        const contentArea = document.getElementById("contentArea");
+
+        if (!awsData) {
+          contentArea.innerHTML = "Failed to retrieve AWS resources.";
+          return;
+        }
+
+        let serviceData = awsData[service];
+        if (!serviceData || serviceData.length === 0) {
+          contentArea.innerHTML = `<div class="service-title">${service} Details</div>No resources found for ${service}.`;
+          return;
+        }
+
+        let displayHtml = `<div class="service-title">${service} Details</div><div class="resource-list">`;
+
+        // Generate dynamic content based on service type
+        if (service === "EC2") {
+          serviceData.forEach((instance) => {
+            displayHtml += `<div>
+            🔹 <strong>ID:</strong> ${instance.id}<br/>
+            ⚙️ <strong>Type:</strong> ${instance.type}<br/>
+            🚦 <strong>Status:</strong> ${instance.state}
+          </div>`;
+          });
+        } else if (service === "RDS") {
+          serviceData.forEach((db) => {
+            displayHtml += `<div>
+            🔹 <strong>DB ID:</strong> ${db.id}<br/>
+            🚦 <strong>Status:</strong> ${db.state}
+          </div>`;
+          });
+        } else if (service === "Lambda") {
+          serviceData.forEach((fn) => {
+            displayHtml += `<div>
+            🔹 <strong>Function Name:</strong> ${fn.name}<br/>
+            🚦 <strong>Status:</strong> ${fn.state}
+          </div>`;
+          });
+        } else if (service === "ECS") {
+          serviceData.forEach((cluster) => {
+            displayHtml += `<div>
+            🔹 <strong>Cluster Name:</strong> ${cluster.name}<br/>
+            🚦 <strong>Status:</strong> ${cluster.status}
+          </div>`;
+          });
+        }
+
+        displayHtml += `</div>`;
+        contentArea.innerHTML = displayHtml;
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchAWSResources);
+    </script>
+  </body>
+</html>
