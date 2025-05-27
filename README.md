@@ -6,10 +6,11 @@ A real-time AWS Resource Monitoring Dashboard built with Flask and HTML/CSS/JS, 
 
 🎥 Demo
 
-https://www.example.com/demo-video-urlReplace this URL with your actual video link (e.g., YouTube, Loom, or embedded on your site).
+https://drive.google.com/file/d/1zFCuyO6-zjOJd8AaygI_XuP_0PWiBtIz/view?usp=drive_link 
 
 📸 UI Snapshot
 
+![Screenshot 2025-05-27 160113](https://github.com/user-attachments/assets/e3da1b81-b578-4d89-b3b3-1e5b890b0432)
 
 
 🧠 Features
@@ -89,7 +90,7 @@ Sample Response:
 
 🙇‍♂️ Author
 
-Kunal Guha📧 [YourEmail@example.com]🔗 LinkedIn/GitHub/Portfolio
+Kunal Guha📧 [kunalguh2003@gmail.com]  🔗 LinkedIn/GitHub/Portfolio
 
 📃 License
 
