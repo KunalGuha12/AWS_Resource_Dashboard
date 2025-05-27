@@ -12,7 +12,7 @@ Whether you’re managing production workloads or experimenting in a sandbox env
 
 ## 🎬 Demo Video
 
-🎥 [Click here to watch the demo](https://www.example.com/demo-video-url) — See it in action!
+🎥 [Click here to watch the demo](https://drive.google.com/file/d/1zFCuyO6-zjOJd8AaygI_XuP_0PWiBtIz/view?usp=drive_link) — See it in action!
 
 ---
 
