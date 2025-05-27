@@ -23,31 +23,16 @@ Whether you’re managing production workloads or experimenting in a sandbox env
 
 🌍 Live Resource Sync: Real-time monitoring of EC2, RDS, Lambda & ECS🎨 Beautiful UI: Clean, dark-themed interface with smooth transitions⚙️ One-Click Refresh: Instantly pull latest AWS status with the Refresh button🧩 Modular Architecture: Separate components for flexibility & scaling🚀 Performance Optimized: Lightweight frontend with rapid API responses
 
-🛠️ Tech Stack Breakdown
+## 🛠️ Tech Stack Breakdown
 
-Layer
+| Layer         | Tools & Frameworks        |
+| ------------- | ------------------------- |
+| 🎨 Frontend   | HTML5, CSS3, Vanilla JS   |
+| 🔧 Backend    | Python, Flask, Flask-CORS |
+| ☁️ AWS SDK    | Boto3                     |
+| 🧪 Testing    | Postman, Browser DevTools |
+| 🔍 API Format | RESTful JSON              |
 
-Tools & Frameworks
-
-🎨 Frontend
-
-HTML5, CSS3, Vanilla JS
-
-🔧 Backend
-
-Python, Flask, Flask-CORS
-
-☁️ AWS SDK
-
-Boto3
-
-🧪 Testing
-
-Postman, Browser DevTools
-
-🔍 API Format
-
-RESTful JSON
 
 📁 Project Layout
 
@@ -83,20 +68,6 @@ Select services: EC2 | RDS | Lambda | ECS
 
 Hit 🔄 Refresh to update data from AWS live
 
-🔌 API Documentation
-
-Endpoint
-
-Method
-
-Description
-
-/aws-resources
-
-GET
-
-Fetch current AWS resource data
-
 🧾 Sample Output:
 
 {
@@ -108,7 +79,7 @@ Fetch current AWS resource data
 
 👨‍💻 Author
 
-Kunal Guha 📫 kunalguh2003@gmail.com.com🔗 GitHub 
+Kunal Guha 📫 kunalguh2003@gmail.com.com 🔗 GitHub 
 
 📝 License
 
