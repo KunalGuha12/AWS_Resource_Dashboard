@@ -52,11 +52,16 @@ RESTful JSON
 📁 Project Layout
 
 📦 AWS Resource Dashboard
-├── 🧠 aws_monitor.py            → Flask-based API service
-├── 🌐 index.html                → Frontend UI template
-├── 📘 README.md                 → Project documentation
-├── 🛠️ tempCodeRunnerFile.py     → Cors testing helper
-├── 🖼️ data-center-image.webp    → Background visual
+
+├── 🧠 aws_monitor.py             →  Flask-based API service
+
+├── 🌐 index.html                 → Frontend UI template
+
+├── 📘 README.md                  → Project documentation
+
+├── 🛠️ tempCodeRunnerFile.py      → Cors testing helper
+
+├── 🖼️ data-center-image.webp     → Background visual
 
 ⚙️ Getting Started
 
