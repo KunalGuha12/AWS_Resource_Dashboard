@@ -100,7 +100,12 @@ python aws_monitor.py
 
 **Kunal Guha**
 📫 [kunalguh2003@gmail.com]
-🔗 [GitHub](https://github.com/KunalGuha12)
+
+**Subhadip Bag**
+📫
+
+**Souvik Haldar**
+📫
 
 ---
 
