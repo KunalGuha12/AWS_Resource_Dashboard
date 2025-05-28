@@ -17,6 +17,7 @@ Whether you’re managing production workloads or experimenting in a sandbox env
 ---
 
 ## 🖼️ Dashboard Preview
+![Screenshot 2025-05-27 160113](https://github.com/user-attachments/assets/e1d3f356-edc7-4c2a-9681-73965843dc18)
 
 ---
 
