@@ -102,10 +102,10 @@ python aws_monitor.py
 📫 [kunalguh2003@gmail.com]
 
 **Subhadip Bag**
-📫
+📫[subhadipbag906@gmail.com]
 
 **Souvik Haldar**
-📫
+📫[hsouvik605@gmail.com]
 
 ---
 
